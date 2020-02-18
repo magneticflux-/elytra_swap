@@ -34,7 +34,7 @@ public abstract class PlayerFallCapture extends LivingEntity {
                 if(!PlayerSwapDataHandler.get(player))
                     return;
 
-                if(!onGround){
+                if(!onGround && !player.isClimbing()){
                     if (PlayerSwapDataHandler.get(player) && heightDifference < 0 && getFallHeight(landedPosition) > 5 && (ServerSidePacketRegistry.INSTANCE.canPlayerReceive(player, ElytraSwap.DUMMY_PACKAGE) || ElytraSwap.config.noModPlayersHandlingMethod > 0)) {
                         replaceArmorWithElytra(player);
                         setSevenFlagState(true);    // thanks to this line you do not have to press space in order to start gliding
